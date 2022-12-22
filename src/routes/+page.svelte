@@ -45,7 +45,6 @@
     </label>
     <ColourPicker label="Colour 1" bind:value={background1}/>
     <ColourPicker label="Colour 2" bind:value={background2} disabled={!useBackgroundGradient}/>
-    <ColourPicker label="colour 3" bind:value={foreground3} disabled={!useForegroundGradient}/>
 </fieldset>
 
 <fieldset>
