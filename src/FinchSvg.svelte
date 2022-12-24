@@ -41,3 +41,11 @@
         </linearGradient>
     </defs>
 </svg>
+
+<style>
+    svg {
+        background: white;
+        border-radius: 20px;
+        padding: 8px;
+    }
+</style>

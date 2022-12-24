@@ -57,3 +57,15 @@ p, h1, h2, h3, h4, h5, h6 {
 #root, #__next {
     isolation: isolate;
 }
+
+/*
+  10. Custom defaults
+ */
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    background: hsl(210deg 20% 10%);
+    color: hsl(210deg 7% 77%);
+}
