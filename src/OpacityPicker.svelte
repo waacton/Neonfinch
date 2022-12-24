@@ -11,7 +11,16 @@
 </label>
 
 <style>
+    input {
+        background: var(--light);
+        border: none;
+    }
+
+    label {
+        display: inherit;
+    }
+
     .disabled {
-        opacity: 0.5;
+        opacity: 0.125;
     }
 </style>

@@ -66,6 +66,11 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 html {
-    background: hsl(210deg 20% 18%);
-    color: hsl(210deg 7% 77%);
+    --dark: hsl(210deg 20% 18%);
+    --darker: hsl(210deg, 20%, 10%);
+    --light: hsl(210deg 7% 77%);
+    --lighter: hsl(210deg 7% 77% / 0.25);
+
+    background: var(--dark);
+    color: var(--light);
 }

@@ -11,7 +11,18 @@
 </label>
 
 <style>
+    input {
+        background: var(--light);
+        width: 2.5rem;
+        height: 2.5rem;
+        border: none;
+    }
+
+    label {
+        display: block;
+    }
+
     .disabled {
-        opacity: 0.5;
+        opacity: 0.125;
     }
 </style>
