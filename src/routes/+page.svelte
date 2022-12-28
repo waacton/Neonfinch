@@ -2,6 +2,7 @@
     import FinchSvg from "../FinchSvg.svelte";
     import ColourPicker from "../ColourPicker.svelte";
     import OpacityPicker from "../OpacityPicker.svelte";
+    import Checkbox from "../Checkbox.svelte";
 
     const size = 512;
     let useForegroundGradient = false;
@@ -31,38 +32,28 @@
         <fieldset>
             <legend>Foreground</legend>
             <div class="fields">
-                <label>
-                    <input type="checkbox" bind:checked={useForegroundGradient}/>
-                    Gradient
-                </label>
-                <ColourPicker label="Colour 1" bind:value={foreground1}/>
-                <ColourPicker label="Colour 2" bind:value={foreground2} disabled={!useForegroundGradient}/>
-                <ColourPicker label="Colour 3" bind:value={foreground3} disabled={!useForegroundGradient}/>
+                <Checkbox label="Gradient" bind:checked={useForegroundGradient} />
+                <ColourPicker bind:value={foreground1}/>
+                <ColourPicker bind:value={foreground2} disabled={!useForegroundGradient}/>
+                <ColourPicker bind:value={foreground3} disabled={!useForegroundGradient}/>
             </div>
         </fieldset>
 
         <fieldset>
             <legend>Background</legend>
             <div class="fields">
-                <label>
-                    <input type="checkbox" bind:checked={useBackgroundGradient}/>
-                    Gradient
-                </label>
-                <ColourPicker label="Colour 1" bind:value={background1}/>
-                <ColourPicker label="Colour 2" bind:value={background2} disabled={!useBackgroundGradient}/>
+                <Checkbox label="Gradient" bind:checked={useBackgroundGradient} />
+                <ColourPicker bind:value={background1}/>
+                <ColourPicker bind:value={background2} disabled={!useBackgroundGradient}/>
             </div>
         </fieldset>
 
         <fieldset>
             <legend>Border</legend>
             <div class="fields">
-                <label>
-                    <input type="checkbox" bind:checked={useBorder}/>
-                    Show
-                </label>
-
+                <Checkbox label="Show" bind:checked={useBorder} />
                 <OpacityPicker label="Opacity" bind:value={borderOpacity} disabled={!useBorder}/>
-                <ColourPicker label="Colour" bind:value={border} disabled={!useBorder}/>
+                <ColourPicker bind:value={border} disabled={!useBorder}/>
             </div>
         </fieldset>
     </div>
@@ -91,11 +82,13 @@
     .fields {
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 6px;
     }
 
     legend {
-        color: var(--lighter)
+        color: var(--lighter);
+        font-variant: all-small-caps;
+        font-weight: 700;
     }
 
 </style>

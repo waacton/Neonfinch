@@ -4,22 +4,13 @@
     export let disabled: boolean;
 </script>
 
-<label class="{disabled ? 'disabled' : ''}">
+<label class="{disabled ? 'disabled' : ''} input-container">
     <!--suppress HtmlWrongAttributeValue -->
     <input type="number" bind:value={value} disabled={disabled} min="0" max="1" step="0.1" />
     {label}
 </label>
 
 <style>
-    input {
-        background: var(--light);
-        border: none;
-    }
-
-    label {
-        display: inherit;
-    }
-
     .disabled {
         opacity: 0.125;
     }
