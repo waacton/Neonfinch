@@ -6,7 +6,7 @@
 
 <label class="{disabled ? 'disabled' : ''} input-container">
     <!--suppress HtmlWrongAttributeValue -->
-    <input type="number" bind:value={value} disabled={disabled} min="0" max="1" step="0.1" />
+    <input type="number" bind:value={value} disabled={disabled} min="0.1" max="1" step="0.1" />
     {label}
 </label>
 
