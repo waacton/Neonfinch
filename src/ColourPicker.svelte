@@ -1,6 +1,6 @@
 <script lang="ts">
     export let value: string;
-    export let disabled: boolean;
+    export let disabled: boolean = false;
 </script>
 
 <label class="{disabled ? 'disabled' : ''} input-container">
