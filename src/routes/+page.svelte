@@ -32,11 +32,11 @@
         URL.revokeObjectURL(url);
     }
 
-    // downloading PNG from SVG isn't straightforward, need to:
+    // downloading non-SVG images from SVG isn't straightforward, need to:
     // 1. create an image using the SVG's blob data as the source
     // 2. draw the image to a canvas
-    // 3. get a URL for a PNG from the canvas, which can be downloaded
-    function downloadPng() {
+    // 3. get a URL for a PNG / JPG from the canvas, which can be downloaded
+    function downloadImage(dataType: 'png' | 'jpg' | 'webp') {
         const url = getSvgBlobURL();
 
         const image = new Image;
@@ -48,8 +48,8 @@
             const context = canvas.getContext("2d");
             context.drawImage(image, 0, 0, size, size);
 
-            const pngUrl = canvas.toDataURL("image/png");
-            download(pngUrl, "neonfinch.png")
+            const imageUrl = canvas.toDataURL('image/' + dataType, 1); // always targeting the highest quality
+            download(imageUrl, "neonfinch." + dataType)
             URL.revokeObjectURL(url);
 
             canvas.remove();
@@ -59,8 +59,12 @@
         image.src = url;
     }
 
+    function downloadPng() { downloadImage('png') }
+    function downloadJpg() { downloadImage('jpg') }
+    function downloadWebp() { downloadImage('webp') }
+
     function getSvgBlobURL(): string {
-        const svg = document.getElementById("svg");
+        const svg = document.getElementById(svgId);
         const blob = new Blob([svg.outerHTML], {type: "image/svg+xml"}); // +xml is needed for PNG image source
         return URL.createObjectURL(blob);
     }
@@ -109,13 +113,13 @@
     </div>
 </div>
 
-<button on:click={downloadSvg}>
-    Save SVG
-</button>
-
-<button on:click={downloadPng}>
-    Save PNG
-</button>
+<fieldset style="display: flex; gap: 8px; margin-left: 32px; width: calc(512px + 32px + 32px)">
+    <legend>Save</legend>
+    <button on:click={downloadSvg}>SVG</button>
+    <button on:click={downloadPng}>PNG</button>
+    <button on:click={downloadJpg}>JPG</button>
+    <button on:click={downloadWebp}>WebP</button>
+</fieldset>
 
 <style>
     .main {
@@ -140,7 +144,7 @@
     .fields {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
     }
 
     legend {
@@ -148,5 +152,4 @@
         font-variant: all-small-caps;
         font-weight: 700;
     }
-
 </style>
