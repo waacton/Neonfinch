@@ -1,4 +1,5 @@
 <script lang="ts">
+    export let id: string;
     export let size: string;
 
     export let useForegroundGradient: boolean;
@@ -16,7 +17,7 @@
 </script>
 
 <!-- webstorm doesn't like this style assignment -->
-<svg style:min-width="{size}" width="{size}" height="{size}" viewBox="0 0 {size} {size}" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg id="{id}" style:min-width="{size}" width="{size}" height="{size}" viewBox="0 0 {size} {size}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g>
         {#if useBorder}
             <path id="background-with-border" fill="url(#background-gradient)" stroke="{border}"
