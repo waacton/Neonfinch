@@ -17,10 +17,11 @@
 </script>
 
 <!--
-    webstorm doesn't like this style assignment; just using it as a test, rest of CSS is in style tag below
+    webstorm doesn't like this style assignment, but handy for using variables
+    rest of CSS is in style tag below (height and width here just as a reference example)
     (also unsure why SVG tries to take up all available space when no height set, but is intended dimensions when set to 100%)
 -->
-<svg id="{id}" style:max-width="{targetWidth}" style:height="100%" style:width="100%"
+<svg id="{id}" style:height="100%" style:width="100%" style:--max-width="{targetWidth}px"
      viewBox="0 0 {targetWidth} {targetWidth}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g>
         {#if useBorder}
@@ -51,6 +52,8 @@
 
 <style>
     svg {
+        /*noinspection CssUnresolvedCustomProperty*/
+        max-width: var(--max-width);
         background: white;
         border-radius: 20px;
         padding: 32px;
