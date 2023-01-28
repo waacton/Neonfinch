@@ -19,9 +19,12 @@
 <!--
     webstorm doesn't like this style assignment, but handy for using variables
     rest of CSS is in style tag below (height and width here just as a reference example)
-    (also unsure why SVG tries to take up all available space when no height set, but is intended dimensions when set to 100%)
+    also:
+    - explicit SVG width & height attributes required for firefox
+    - unsure why SVG tries to take up all available space when no style height set, but is intended dimensions when set to 100%
 -->
-<svg id="{id}" style:height="100%" style:width="100%" style:--max-width="{targetWidth}px"
+<svg id="{id}" height="{targetWidth}" width="{targetWidth}"
+     style:--max-width="{targetWidth}px" style:height="100%" style:width="100%"
      viewBox="0 0 {targetWidth} {targetWidth}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g>
         {#if useBorder}

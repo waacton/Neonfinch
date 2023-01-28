@@ -25,11 +25,7 @@ function downloadImage(dataType: 'png' | 'jpg' | 'webp') {
         canvas.width = IMAGE_SIZE;
         canvas.height = IMAGE_SIZE;
 
-        const context = canvas.getContext("2d");
-        if (context === null) {
-            console.log("null context")
-            throw Error();
-        }
+        const context = canvas.getContext("2d")!;
         context.drawImage(image, 0, 0, IMAGE_SIZE, IMAGE_SIZE);
 
         const imageUrl = canvas.toDataURL('image/' + dataType, 1); // always targeting the highest quality
@@ -44,11 +40,7 @@ function downloadImage(dataType: 'png' | 'jpg' | 'webp') {
 }
 
 function getSvgBlobURL(): string {
-    const svg = document.getElementById(SVG_ID);
-    if (svg === null) {
-        console.log("null svg")
-        throw Error();
-    }
+    const svg = document.getElementById(SVG_ID)!;
     const blob = new Blob([svg.outerHTML], {type: "image/svg+xml"}); // +xml is needed for PNG image source
     return URL.createObjectURL(blob);
 }
