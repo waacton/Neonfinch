@@ -30,9 +30,12 @@
 
 <Header />
 
+<!-- webstorm doesn't like this style assignment, but handy for using variables -->
 <div class="max-width-wrapper" style:--max-width="{IMAGE_SIZE * 2}px">
     <div class="main">
-        <FinchSvg {...svgProps}/>
+        <div class="svg-wrapper">
+            <FinchSvg class="test" {...svgProps}/>
+        </div>
 
         <div class="modifiers">
             <fieldset>
@@ -84,6 +87,13 @@
         gap: 16px;
     }
 
+    .svg-wrapper {
+        background: white;
+        border-radius: 20px;
+        padding: 32px;
+        filter: drop-shadow(2px 2px 4px var(--shadow));
+    }
+
     .modifiers {
         flex: 1;
         display: flex;
@@ -113,5 +123,14 @@
         color: var(--lighter);
         font-variant: all-small-caps;
         font-weight: 700;
+    }
+
+    @media (pointer: coarse) {
+        .svg-wrapper {
+            position: sticky;
+            top: 16px;
+            isolation: isolate;
+            z-index: 1;
+        }
     }
 </style>
