@@ -9,14 +9,14 @@ export function downloadSvg() {
 }
 
 export function downloadPng() { downloadImage('png') }
-export function downloadJpg() { downloadImage('jpg') }
+export function downloadJpg() { downloadImage('jpeg') }
 export function downloadWebp() { downloadImage('webp') }
 
 // downloading non-SVG images from SVG isn't straightforward, need to:
 // 1. create an image using the SVG's blob data as the source
 // 2. draw the image to a canvas
 // 3. get a URL for a PNG / JPG from the canvas, which can be downloaded
-function downloadImage(dataType: 'png' | 'jpg' | 'webp') {
+function downloadImage(dataType: 'png' | 'jpeg' | 'webp') {
     const url = getSvgBlobURL();
 
     const image = new Image;
