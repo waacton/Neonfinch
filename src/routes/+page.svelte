@@ -99,7 +99,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        justify-content: space-evenly;
+        justify-content: flex-end;
         gap: 16px;
     }
 
