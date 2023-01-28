@@ -7,15 +7,15 @@
     import OpacityPicker from "../OpacityPicker.svelte";
     import {downloadJpg, downloadPng, downloadSvg, downloadWebp, IMAGE_SIZE, SVG_ID} from "../download";
 
-    let useForegroundGradient = false;
-    let foreground1 = "#ff283c";
-    let foreground2 = "#ff283c";
-    let foreground3 = "#ff283c";
+    let useForegroundGradient = true;
+    let foreground1 = "#00ffff";
+    let foreground2 = "#ffff00";
+    let foreground3 = "#ff00ff";
     let useBackgroundGradient = false;
-    let background1 = "#0f1c30";
-    let background2 = "#0f1c30";
+    let background1 = "#252e37";
+    let background2 = "#202932";
     let useBorder = false;
-    let border = "#ff283c";
+    let border = "#000000";
     let borderOpacity = 0.5;
 
     // $: is reactive declaration, effectively updating this props object when something changes

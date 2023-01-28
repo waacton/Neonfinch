@@ -1,4 +1,14 @@
-# create-svelte
+# <img src="https://gitlab.com/Wacton/Neonfinch/-/raw/main/resources/neonfinch.png" width="32" height="32"> Neonfinch
+
+A web app for making bodacious gradient variations of the [Firefinch](https://firefinch.io) logo.
+
+[Try it out](https://neonfinch.wacton.xyz).
+
+![Neonfinch screenshot](resources/screenshot.png)
+
+---
+
+# Svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
