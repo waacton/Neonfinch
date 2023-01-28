@@ -10,6 +10,7 @@
     .header {
         height: 48px;
         display: flex;
+        gap: 80px;
     }
 
     .header > div {
@@ -18,13 +19,6 @@
 
     .header-decoration {
         background: var(--darker);
-    }
-
-    @media (max-width: 640px)
-    {
-        .header-decoration {
-            display: none;
-        }
     }
 
     .header > :first-child {
@@ -61,5 +55,20 @@
 
         /* sweet neon blur */
         text-shadow: -4px 4px 20px magenta, 0px 0px 20px yellow, 4px -4px 20px cyan
+    }
+
+    @media (max-width: 640px)
+    {
+        .header-decoration {
+            display: none;
+        }
+    }
+
+    @media (max-width: 380px)
+    {
+        h1 {
+            letter-spacing: 1rem;
+            text-indent: 1rem;
+        }
     }
 </style>
