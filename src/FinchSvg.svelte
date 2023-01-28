@@ -1,6 +1,6 @@
 <script lang="ts">
     export let id: string;
-    export let size: string;
+    export let targetWidth: string;
 
     export let useForegroundGradient: boolean;
     export let foreground1: string;
@@ -16,8 +16,12 @@
     export let borderOpacity: boolean;
 </script>
 
-<!-- webstorm doesn't like this style assignment -->
-<svg id="{id}" style:min-width="{size}" width="{size}" height="{size}" viewBox="0 0 {size} {size}" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!--
+    webstorm doesn't like this style assignment; just using it as a test, rest of CSS is in style tag below
+    (also unsure why SVG tries to take up all available space when no height set, but is intended dimensions when set to 100%)
+-->
+<svg id="{id}" style:max-width="{targetWidth}" style:height="100%" style:width="100%"
+     viewBox="0 0 {targetWidth} {targetWidth}" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g>
         {#if useBorder}
             <path id="background-with-border" fill="url(#background-gradient)" stroke="{border}"
@@ -32,7 +36,7 @@
     </g>
     <defs>
         <radialGradient id="background-gradient" cx="0" cy="0" r="0.69" gradientUnits="userSpaceOnUse"
-                        gradientTransform="translate({size / 2} {size / 2}) scale({size})" spreadMethod="reflect">
+                        gradientTransform="translate({targetWidth / 2} {targetWidth / 2}) scale({targetWidth})" spreadMethod="reflect">
             <stop offset="0" stop-color="{background1}"/>
             <stop offset="1" stop-color="{useBackgroundGradient ? background2 : background1}"/>
         </radialGradient>

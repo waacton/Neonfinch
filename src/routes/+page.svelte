@@ -3,9 +3,8 @@
     import Checkbox from "../Checkbox.svelte";
     import ColourPicker from "../ColourPicker.svelte";
     import OpacityPicker from "../OpacityPicker.svelte";
+    import {downloadJpg, downloadPng, downloadSvg, downloadWebp, IMAGE_SIZE, SVG_ID} from "../download";
 
-    const svgId = "svg";
-    const size = 512;
     let useForegroundGradient = false;
     let foreground1 = "#ff283c";
     let foreground2 = "#ff283c";
@@ -19,63 +18,11 @@
 
     // $: is reactive declaration, effectively updating this props object when something changes
     $: svgProps = {
-        id: svgId,
-        size,
+        id: SVG_ID,
+        targetWidth: IMAGE_SIZE,
         useForegroundGradient, foreground1, foreground2, foreground3,
         useBackgroundGradient, background1, background2,
         useBorder, border, borderOpacity
-    }
-
-    function downloadSvg() {
-        const url = getSvgBlobURL();
-        download(url, "neonfinch.svg");
-        URL.revokeObjectURL(url);
-    }
-
-    // downloading non-SVG images from SVG isn't straightforward, need to:
-    // 1. create an image using the SVG's blob data as the source
-    // 2. draw the image to a canvas
-    // 3. get a URL for a PNG / JPG from the canvas, which can be downloaded
-    function downloadImage(dataType: 'png' | 'jpg' | 'webp') {
-        const url = getSvgBlobURL();
-
-        const image = new Image;
-        image.onload = () => {
-            const canvas = document.createElement("canvas");
-            canvas.width = size;
-            canvas.height = size;
-
-            const context = canvas.getContext("2d");
-            context.drawImage(image, 0, 0, size, size);
-
-            const imageUrl = canvas.toDataURL('image/' + dataType, 1); // always targeting the highest quality
-            download(imageUrl, "neonfinch." + dataType)
-            URL.revokeObjectURL(url);
-
-            canvas.remove();
-            image.remove();
-        }
-
-        image.src = url;
-    }
-
-    function downloadPng() { downloadImage('png') }
-    function downloadJpg() { downloadImage('jpg') }
-    function downloadWebp() { downloadImage('webp') }
-
-    function getSvgBlobURL(): string {
-        const svg = document.getElementById(svgId);
-        const blob = new Blob([svg.outerHTML], {type: "image/svg+xml"}); // +xml is needed for PNG image source
-        return URL.createObjectURL(blob);
-    }
-
-    // make a temporary <a> element to download a URL
-    function download(url: string, name: string) {
-        const a = document.createElement("a") as HTMLAnchorElement;
-        a.download = name;
-        a.href = url;
-        a.click();
-        a.remove();
     }
 </script>
 
