@@ -1,3 +1,4 @@
+<!--suppress CssUnresolvedCustomProperty -->
 <script lang="ts">
     import FinchSvg from "../FinchSvg.svelte";
     import Checkbox from "../Checkbox.svelte";
@@ -26,72 +27,83 @@
     }
 </script>
 
-<div class="main">
-    <FinchSvg {...svgProps}/>
+<div class="max-width-wrapper" style:--max-width="{IMAGE_SIZE * 2}px">
+    <div class="main">
+        <FinchSvg {...svgProps}/>
 
-    <div class="fieldsets">
-        <fieldset>
-            <legend>Foreground</legend>
-            <div class="fields">
-                <Checkbox label="Gradient" bind:checked={useForegroundGradient} />
-                <ColourPicker bind:value={foreground1}/>
-                <ColourPicker bind:value={foreground2} disabled={!useForegroundGradient}/>
-                <ColourPicker bind:value={foreground3} disabled={!useForegroundGradient}/>
-            </div>
-        </fieldset>
+        <div class="modifiers">
+            <fieldset>
+                <legend>Foreground</legend>
+                    <Checkbox label="Gradient" bind:checked={useForegroundGradient} />
+                    <ColourPicker bind:value={foreground1}/>
+                    <ColourPicker bind:value={foreground2} disabled={!useForegroundGradient}/>
+                    <ColourPicker bind:value={foreground3} disabled={!useForegroundGradient}/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Background</legend>
+                    <Checkbox label="Gradient" bind:checked={useBackgroundGradient} />
+                    <ColourPicker bind:value={background1}/>
+                    <ColourPicker bind:value={background2} disabled={!useBackgroundGradient}/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Border</legend>
+                    <Checkbox label="Show" bind:checked={useBorder} />
+                    <OpacityPicker label="Opacity" bind:value={borderOpacity} disabled={!useBorder}/>
+                    <ColourPicker bind:value={border} disabled={!useBorder}/>
+            </fieldset>
+        </div>
 
         <fieldset>
-            <legend>Background</legend>
-            <div class="fields">
-                <Checkbox label="Gradient" bind:checked={useBackgroundGradient} />
-                <ColourPicker bind:value={background1}/>
-                <ColourPicker bind:value={background2} disabled={!useBackgroundGradient}/>
-            </div>
-        </fieldset>
-
-        <fieldset>
-            <legend>Border</legend>
-            <div class="fields">
-                <Checkbox label="Show" bind:checked={useBorder} />
-                <OpacityPicker label="Opacity" bind:value={borderOpacity} disabled={!useBorder}/>
-                <ColourPicker bind:value={border} disabled={!useBorder}/>
-            </div>
+            <legend>Save</legend>
+            <button on:click={downloadSvg}>SVG</button>
+            <button on:click={downloadPng}>PNG</button>
+            <button on:click={downloadJpg}>JPG</button>
+            <button on:click={downloadWebp}>WebP</button>
         </fieldset>
     </div>
 </div>
 
-<fieldset style="display: flex; gap: 8px; margin-left: 32px; width: calc(512px + 32px + 32px)">
-    <legend>Save</legend>
-    <button on:click={downloadSvg}>SVG</button>
-    <button on:click={downloadPng}>PNG</button>
-    <button on:click={downloadJpg}>JPG</button>
-    <button on:click={downloadWebp}>WebP</button>
-</fieldset>
-
 <style>
+    .max-width-wrapper {
+        max-width: var(--max-width);
+        margin-left: auto;
+        margin-right: auto;
+        padding: 16px;
+    }
+
     .main {
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
-    .fieldsets {
+    .modifiers {
+        flex: 1;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: space-evenly;
+        gap: 16px;
     }
 
     fieldset {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        background: var(--darker);
         border-radius: 0.5rem;
         border: 2px solid;
         border-color: var(--lighter);
-        min-width: 200px;
+        width: 100%;
     }
 
-    .fields {
-        display: flex;
+    .modifiers > fieldset {
         flex-direction: column;
-        gap: 8px;
     }
 
     legend {

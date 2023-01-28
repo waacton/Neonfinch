@@ -57,8 +57,7 @@
         background: white;
         border-radius: 20px;
         padding: 32px;
-        margin: 32px;
         box-sizing: content-box; /* so that content takes up the width it wants to be */
-        filter: drop-shadow(2px 2px 4px var(--darker))
+        filter: drop-shadow(2px 2px 4px var(--shadow))
     }
 </style>

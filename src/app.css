@@ -63,9 +63,10 @@ p, h1, h2, h3, h4, h5, h6 {
  */
 html {
     --dark: hsl(210deg 20% 18%);
-    --darker: hsl(210deg, 20%, 10%);
+    --darker: hsl(210deg 22% 16%);
     --light: hsl(210deg 7% 77%);
-    --lighter: #50565c;
+    --lighter: hsl(210deg 7% 35%);
+    --shadow: hsl(210deg, 33%, 10%);
 
     background: var(--dark);
     color: var(--light);
