@@ -1,5 +1,6 @@
 <!--suppress CssUnresolvedCustomProperty -->
 <script lang="ts">
+    import Header from "../Header.svelte";
     import FinchSvg from "../FinchSvg.svelte";
     import Checkbox from "../Checkbox.svelte";
     import ColourPicker from "../ColourPicker.svelte";
@@ -26,6 +27,8 @@
         useBorder, border, borderOpacity
     }
 </script>
+
+<Header />
 
 <div class="max-width-wrapper" style:--max-width="{IMAGE_SIZE * 2}px">
     <div class="main">
