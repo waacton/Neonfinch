@@ -43,7 +43,7 @@
             <FinchSvg class="test" {...svgProps} />
         </div>
 
-        <div class="modifiers">
+        <div class="options">
             <fieldset>
                 <legend>Foreground</legend>
                     <Checkbox label="Gradient" bind:checked={useForegroundGradient} />
@@ -65,15 +65,15 @@
                     <OpacityPicker label="Opacity" bind:value={borderOpacity} disabled={!useBorder} />
                     <ColourPicker bind:value={border} disabled={!useBorder} />
             </fieldset>
-        </div>
 
-        <fieldset>
-            <legend>Save</legend>
-            <button on:click={downloadSvg}>SVG</button>
-            <button on:click={downloadPng}>PNG</button>
-            <button on:click={downloadJpg}>JPG</button>
-            <button on:click={downloadWebp}>WebP</button>
-        </fieldset>
+            <fieldset class="button-row">
+                <legend>Save</legend>
+                <button on:click={downloadSvg}>SVG</button>
+                <button on:click={downloadPng}>PNG</button>
+                <button on:click={downloadJpg}>JPG</button>
+                <button on:click={downloadWebp}>WebP</button>
+            </fieldset>
+        </div>
     </div>
 </div>
 
@@ -82,25 +82,26 @@
         max-width: var(--max-width);
         margin-left: auto;
         margin-right: auto;
-        padding: 16px;
+        padding: 16px 32px;
     }
 
     .main {
         display: flex;
         flex-direction: row;
         justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 32px;
     }
 
     .svg-wrapper {
-        background: white;
         border-radius: 20px;
-        padding: 32px;
-        filter: drop-shadow(2px 2px 4px var(--shadow));
+        box-shadow:
+                2px 2px 4px var(--shadow1),
+                -2px -2px 4px var(--shadow2);
     }
 
-    .modifiers {
+    .options {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -111,31 +112,41 @@
 
     fieldset {
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+        flex-direction: column;
         gap: 8px;
         background: var(--darker);
         border-radius: 0.5rem;
         border: 2px solid;
-        border-color: var(--lighter);
+        border-color: var(--light);
         width: 100%;
     }
 
-    .modifiers > fieldset {
-        flex-direction: column;
+    .button-row {
+        flex-direction: row;
     }
 
     legend {
-        color: var(--lighter);
+        color: var(--light);
         font-variant: all-small-caps;
         font-weight: 700;
+    }
+
+    /* forces options to take up 100% width at this size, moving beneath the image */
+    @media (max-width: 936px)
+    {
+        .options {
+            min-width: 100%;
+        }
+
+        .main {
+            gap: 16px;
+        }
     }
 
     @media (pointer: coarse) {
         .svg-wrapper {
             position: sticky;
             top: 16px;
-            isolation: isolate;
             z-index: 1;
         }
     }

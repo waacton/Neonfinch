@@ -64,12 +64,13 @@ p, h1, h2, h3, h4, h5, h6 {
 html {
     --dark: hsl(210deg 20% 18%);
     --darker: hsl(210deg 22% 16%);
-    --light: hsl(210deg 7% 77%);
-    --lighter: hsl(210deg 7% 35%);
-    --shadow: hsl(210deg, 33%, 10%);
+    --light: hsl(210deg 7% 35%);
+    --lighter: hsl(210deg 7% 77%);
+    --shadow1: hsl(210deg, 25%, 12%);
+    --shadow2: hsl(210deg, 17%, 27%);
 
     background: var(--dark);
-    color: var(--light);
+    color: var(--lighter);
 }
 
 * {
@@ -81,8 +82,8 @@ html {
 input, button {
     width: 4rem;
     height: 2rem;
-    background: var(--light);
-    border: 2px solid var(--lighter);
+    background: var(--lighter);
+    border: 2px solid var(--light);
     border-radius: 0.25rem;
 }
 
@@ -92,7 +93,7 @@ input:hover, button:hover {
 
 button:active {
     background: var(--dark);
-    color: var(--light)
+    color: var(--lighter)
 }
 
 /*
@@ -109,7 +110,7 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked {
-    background: var(--light);
+    background: var(--lighter);
 }
 
 input[type=checkbox]:checked:hover {
