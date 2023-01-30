@@ -123,6 +123,7 @@
 
     .button-row {
         flex-direction: row;
+        flex-wrap: wrap;
     }
 
     legend {
